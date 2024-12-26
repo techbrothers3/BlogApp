@@ -3,6 +3,7 @@ import classes from "./styles.module.css";
 import { GlobalContext } from "../../context";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
+import config from '../../config'
 export default function AddNewBlog() {
   const { formData, setFormData, setIsEdit, isEdit } =
     useContext(GlobalContext);
@@ -12,13 +13,13 @@ export default function AddNewBlog() {
   async function handleSaveBlogToDb() {
     const response = isEdit
       ? await axios.put(
-          `http://localhost:5000/api/blogs/update/${location.state.getCurrentBlog._id}`,
+          `${config.BASE_URL}/api/blog/${location.state.getCurrentBlog._id}`,
           {
             title: formData.title,
             description: formData.description,
           }
         )
-      : await axios.post("http://localhost:5000/api/blogs/add", {
+      : await axios.post(`${config.BASE_URL}/api/blog/`, {
           title: formData.title,
           description: formData.description,
         });
