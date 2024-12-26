@@ -59,7 +59,7 @@ http://localhost:5000/api
 
 #### 4. **Delete a Blog**
 - **Method**: `DELETE`
-- **Endpoint**: `/blogs/:id`
+- **Endpoint**: `/blog/:id`
 - **Description**: Deletes an existing blog post.
 - **Request Parameters**:
     - `id` (string): The unique identifier of the blog to delete.

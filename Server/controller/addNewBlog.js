@@ -4,6 +4,10 @@ const logger = require("../logger");
 
 const addNewBlog = async (req, res) => {
     const { title, description } = req.body;
+    if(title.trim().length === 0 || description.trim().length === 0) {
+      logger.info(JSON.stringify({"message": "title or description is empty"}));
+      return res.status(400).json({"message": "title or description is empty"})
+    }
     const currentDate = new Date();
     const newBlog = new Blog({
       title,
@@ -15,15 +19,7 @@ const addNewBlog = async (req, res) => {
     } catch (e) {
       logger.error(e);
       logger.info(JSON.stringify({"statusCode":500, message: e.message}));
-      return res.status(400).json({message: e.message})
-    }
-    try {
-      const session = await mongoose.startSession();
-      session.startTransaction();
-      session.commitTransaction();
-    } catch (e) {
-      logger.info(JSON.stringify({"statusCode":500, "message":e}));
-      return res.status(500).json({ message: e });
+      return res.status(500).json({message: e.message})
     }
     logger.info(JSON.stringify({"statusCode":200,"responseBody":newBlog}));
     return res.status(200).json({ newBlog });
