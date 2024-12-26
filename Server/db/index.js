@@ -7,7 +7,7 @@ mongoose.set("strictQuery", false);
 
 mongoose
   .connect(
-    `mongodb+srv://${username}:${password}@mydb.nvmdb.mongodb.net/?retryWrites=true&w=majority&appName=myDb`
+    `mongodb+srv://${username}:${password}@mydb.nvmdb.mongodb.net/?retryWrites=true&w=majority&appName=myDb?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&socketTimeoutMS=20000`
   )
   .then(() => {
     logger.info("connected to MongoDB");

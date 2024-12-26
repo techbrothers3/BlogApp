@@ -7,6 +7,7 @@ const fetchListOfBlogs = async (req, res,next) => {
       blogList = await Blog.find();
     } catch (e) {
        //Return a 500 status code if the app cannot connect to db
+       logger.info(JSON.stringify({"statusCode":500,"message": e.message}));
        res.status(500).json({message: "Internal server error cannot connect to db"})
     }
     if (!blogList) {

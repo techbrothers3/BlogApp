@@ -14,12 +14,12 @@ const addNewBlog = async (req, res) => {
       await newBlog.save();
     } catch (e) {
       logger.error(e);
-      return res.status(500).json({message: e.message})
+      logger.info(JSON.stringify({"statusCode":500, message: e.message}));
+      return res.status(400).json({message: e.message})
     }
     try {
       const session = await mongoose.startSession();
       session.startTransaction();
-      await newBlog.save(session);
       session.commitTransaction();
     } catch (e) {
       logger.info(JSON.stringify({"statusCode":500, "message":e}));

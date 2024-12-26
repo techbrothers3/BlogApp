@@ -15,9 +15,9 @@ const deleteBlog = async (req, res) => {
     return res.status(200).json({ message: "successfully deleted" });
   } catch (e) {
     logger.error(e.message);
-    logger.info(JSON.stringify({ "statusCode": 500 }));
+    logger.info(JSON.stringify({ "statusCode": 400 }));
     return res
-      .status(500)
+      .status(400)
       .json({ message: "unable to delete pls provide the valid id" });
   }
 };

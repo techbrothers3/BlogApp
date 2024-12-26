@@ -32,7 +32,7 @@ http://localhost:5000/api
 
 #### 2. **Create a New Blog**
 - **Method**: `POST`
-- **Endpoint**: `/blogs`
+- **Endpoint**: `/blog`
 - **Description**: Creates a new blog post.
 - **Request Body**:
     ```json
@@ -45,7 +45,7 @@ http://localhost:5000/api
 
 #### 3. **Edit a Blog**
 - **Method**: `PUT`
-- **Endpoint**: `/blogs/:id`
+- **Endpoint**: `/blog/:id`
 - **Description**: Updates an existing blog post.
 - **Request Parameters**:
     - `id` (string): The unique identifier of the blog to edit.
