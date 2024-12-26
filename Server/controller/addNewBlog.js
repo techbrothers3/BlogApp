@@ -5,7 +5,7 @@ const logger = require("../logger");
 const addNewBlog = async (req, res) => {
     const { title, description } = req.body;
     if(title.trim().length === 0 || description.trim().length === 0) {
-      logger.info(JSON.stringify({"message": "title or description is empty"}));
+      logger.info(JSON.stringify({"message": "title or description is empty","statusCode":400}));
       return res.status(400).json({"message": "title or description is empty"})
     }
     const currentDate = new Date();

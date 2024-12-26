@@ -5,6 +5,12 @@ const logger = require("../logger");
 const updateBlog = async (req, res) => {
   const id = req.params.id;
   const { title, description } = req.body;
+  const ObjectId = require("mongoose").Types.ObjectId;
+  if (!ObjectId.isValid(id) || id.length === 0) {
+    logger.info(JSON.stringify({ statusCode: 400, message: "invalid id" }));
+
+    return res.status(400).json({ message: "invalid id" });
+  }
   let currentBlogToUpdate;
   try {
     currentBlogToUpdate = await Blog.findByIdAndUpdate(id, {
@@ -18,10 +24,7 @@ const updateBlog = async (req, res) => {
       .status(500)
       .json({ message: "something went wrong while updating pls try again" });
   }
-  if (!currentBlogToUpdate) {
-    logger.info(JSON.stringify({ "statusCode": 500 }));
-    return res.status(500).json({ message: "unable to update" });
-  }
+
   logger.info(
     JSON.stringify({ "responseBody": currentBlogToUpdate, "statusCode": 200 })
   );
