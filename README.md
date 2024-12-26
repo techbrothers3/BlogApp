@@ -4,9 +4,9 @@ Blog App is web application that allows users to create, edit, delete blog posts
 
 ## Features
 
-**Create Blogs**: Users can add new blog posts with a title and description.
-**Edit Blogs**: Existing blogs can updated to modify content.
-**Delte Blogs**: Unwanted blogs can be removed.
+- **Create Posts**: Users can add new blog posts with a title and description.
+- **Edit Posts**: Existing posts can be updated to modify content.
+- **Delete Posts**: Unwanted posts can be removed from the blog.
 
 ## Installation
 
