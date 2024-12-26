@@ -1,12 +1,9 @@
 const express = require("express");
 const blogRouter = express.Router();
-
-const {
-  fetchListOfBlogs,
-  addNewBlog,
-  deleteBlog,
-  updateBlog,
-} = require("../controller/blog-controller");
+const fetchListOfBlogs = require('../controller/fetchListOfBlogs');
+const addNewBlog = require('../controller/addNewBlog');
+const deleteBlog = require('../controller/deleteBlog');
+const updateBlog = require('../controller/updateBlog');
 
 blogRouter.get("/", fetchListOfBlogs);
 blogRouter.post("/add", addNewBlog);
